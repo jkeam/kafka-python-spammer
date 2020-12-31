@@ -8,7 +8,7 @@ times = int(getenv('TIMES', 1))
 uri = f'{bootstrap_server_host}:{bootstrap_server_port}'
 
 try:
-    producer = KafkaProducer(bootstrap_servers=uri, acks=1, retries=5, batch_size=1)
+    producer = KafkaProducer(bootstrap_servers=uri, acks=0, batch_size=1)
     for i in range(times):
         message = f'{{ "message": "Sending Message: {i}" }}'
         producer.send(topic_name, message.encode())
